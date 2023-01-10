@@ -2,16 +2,16 @@ rm -r output_dir/* runs/*
 
 task=epidemic
 MAX_LENGTH=128
-MODEL=bert-base-cased
+MODEL=bert-base-multilingual-uncased
 OUTPUT_DIR=output_dir
 BATCH_SIZE=32
-NUM_EPOCHS=1
+NUM_EPOCHS=2
 SAVE_STEPS=1000
 LOGGING_STEPS=1000
 SEED=42
 
 python3 run_ner.py \
-  --data_dir=./data/ \
+  --data_dir=./data_BOTH_UNCASED/ \
   --model_type=bert \
   --labels=./data/labels.txt \
   --model_name_or_path=${MODEL} \
@@ -27,6 +27,6 @@ python3 run_ner.py \
   --do_eval \
   --do_predict \
   --overwrite_output_dir \
-  # --do_lower_case \
+  --do_lower_case \
   #--max_grad_norm=0.5 \
   # --do_lower_case \
