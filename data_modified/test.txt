@@ -5,14 +5,14 @@ de O
 mille O
 morts O
 du O
-choléra B-DIS
+choléra B-CROP
 , O
 selon O
 un O
 nouveau O
 bilan O
 Le O
-choléra B-DIS
+choléra B-CROP
 a O
 fait O
 1 O
@@ -95,7 +95,7 @@ de O
 . O
 
 Le O
-choléra B-DIS
+choléra B-CROP
 a O
 fait O
 1 O
@@ -279,7 +279,7 @@ contre O
 lépidémie O
 . O
 
-Grypa B-DIS
+Grypa B-CROP
 – O
 co O
 musisz O
@@ -333,7 +333,7 @@ ostatnich O
 latach O
 chorowało O
 na O
-grypę B-DIS
+grypę B-CROP
 ponad O
 2,5 O
 min O
@@ -365,12 +365,12 @@ roku O
 . O
 
 Wirusem O
-grypy B-DIS
+grypy B-CROP
 A(H1N1)2009 O
 , O
 potocznie O
 nazywanej O
-świńską I-DIS
+świńską I-CROP
 , O
 dotkniętych O
 zostało O
@@ -410,7 +410,7 @@ r O
 . O
 
 Na O
-grypę B-DIS
+grypę B-CROP
 możemy O
 zachorować O
 wiele O
@@ -491,7 +491,7 @@ podtypów O
 i O
 nowe O
 mutacje O
-Grypę B-DIS
+Grypę B-CROP
 wywołują O
 wirusy O
 typu O
@@ -524,13 +524,13 @@ W O
 1997 O
 r O
 . O
-ptasi B-DIS
+ptasi B-CROP
 wirus O
-grypy B-DIS
+grypy B-CROP
 A O
-( I-DIS
-H1N1 I-DIS
-) I-DIS
+( I-CROP
+H1N1 I-CROP
+) I-CROP
 przekroczył O
 barierę O
 gatunkową O
@@ -566,8 +566,8 @@ pandemie O
 
 Najgroźniejszą O
 była O
-grypa B-DIS
-hiszpanka I-DIS
+grypa B-CROP
+hiszpanka I-CROP
 ( O
 1918 O
 1919 O
@@ -599,8 +599,8 @@ tylko O
 mln O
 . O
 
-Grypa B-DIS
-azjatycka I-DIS
+Grypa B-CROP
+azjatycka I-CROP
 ( O
 1957 O
 1958 O
@@ -615,7 +615,7 @@ ofiar O
 podobnie O
 jak O
 następna O
-grypa B-DIS
+grypa B-CROP
 Hongkong B-LOC
 ( O
 1968 O
@@ -666,7 +666,7 @@ jedna O
 z O
 największych O
 epidemii O
-grypy B-DIS
+grypy B-CROP
 miała O
 miejsce O
 w O
@@ -681,9 +681,9 @@ mln O
 osób O
 . O
 
-Wirus B-DIS
-typu I-DIS
-B I-DIS
+Wirus B-CROP
+typu I-CROP
+B I-CROP
 powoduje O
 epidemie O
 – O
@@ -721,13 +721,13 @@ spodziewać O
 się O
 wystąpienia O
 jednocześnie O
-grypy B-DIS
-sezonowej I-DIS
+grypy B-CROP
+sezonowej I-CROP
 i O
 tzw O
 . O
 
-świńskiej I-DIS
+świńskiej I-CROP
 . O
 
 Nie O
@@ -771,8 +771,8 @@ stanie O
 rozpoznać O
 . O
 
-Świńska B-DIS
-grypa B-DIS
+Świńska B-CROP
+grypa B-CROP
 : O
 pierwsza O
 pandemia O
@@ -812,8 +812,8 @@ wiecie O
 Pierwsze O
 zachorowania O
 na O
-świńską B-DIS
-grypę I-DIS
+świńską B-CROP
+grypę I-CROP
 odnotowano O
 w O
 kwietniu O
@@ -844,9 +844,9 @@ XXI O
 w O
 . O
 Wirus O
-grypy B-DIS
-A(H1N1 I-DIS
-) I-DIS
+grypy B-CROP
+A(H1N1 I-CROP
+) I-CROP
 powstał O
 na O
 skutek O
@@ -880,8 +880,8 @@ jej O
 potoczna O
 nazwa O
 „ O
-grypa B-DIS
-świńska I-DIS
+grypa B-CROP
+świńska I-CROP
 ” O
 . O
 
@@ -907,9 +907,9 @@ tej O
 pory O
 najwięcej O
 przypadków O
-grypy B-DIS
-A(H1N1 I-DIS
-) I-DIS
+grypy B-CROP
+A(H1N1 I-CROP
+) I-CROP
 obserwuje O
 się O
 w O
@@ -968,11 +968,11 @@ br O
 
 Tak O
 jak O
-grypa B-DIS
-sezonowa I-DIS
+grypa B-CROP
+sezonowa I-CROP
 , O
 nowa O
-grypa B-DIS
+grypa B-CROP
 szerzy O
 się O
 drogą O
@@ -1016,8 +1016,8 @@ ją O
 tak O
 samo O
 jak O
-grypę B-DIS
-sezonową I-DIS
+grypę B-CROP
+sezonową I-CROP
 . O
 
 Jeśli O
@@ -1042,7 +1042,7 @@ wiele O
 groźnych O
 powikłań O
 Wirus O
-grypy B-DIS
+grypy B-CROP
 przenosi O
 się O
 w O
@@ -1207,7 +1207,7 @@ bakteryjnych O
 
 Zarówno O
 wirus O
-grypy B-DIS
+grypy B-CROP
 , O
 jak O
 i O
@@ -1282,7 +1282,7 @@ w O
 szpitalu O
 . O
 
-Grypa B-DIS
+Grypa B-CROP
 może O
 także O
 zaostrzyć O
@@ -1395,7 +1395,7 @@ fragmenty O
 zabitego O
 ” O
 wirusa O
-grypy B-DIS
+grypy B-CROP
 , O
 więc O
 po O
@@ -1417,7 +1417,7 @@ odczyny O
 poszczepienne O
 przypominające O
 objawy O
-grypy B-DIS
+grypy B-CROP
 ( O
 bóle O
 kostno O
@@ -1442,7 +1442,7 @@ to O
 , O
 że O
 wirusy O
-grypy B-DIS
+grypy B-CROP
 podlegają O
 bardzo O
 częstym O
@@ -1492,7 +1492,7 @@ pobieranego O
 u O
 osób O
 zarażonych O
-grypą B-DIS
+grypą B-CROP
 . O
 
 Wyniki O
@@ -1591,7 +1591,7 @@ nowo O
 
 Szczepionka O
 przeciw O
-grypie B-DIS
+grypie B-CROP
 nie O
 zabezpiecza O
 przed O
@@ -1646,7 +1646,7 @@ przed O
 powikłaniami O
 . O
 
-Choléra B-DIS
+Choléra B-CROP
 : O
 la O
 frontière O
@@ -1692,7 +1692,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 , O
 a O
 indiqué O
@@ -1791,7 +1791,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 , O
 qui O
 a O
@@ -1867,7 +1867,7 @@ a O
 contaminée O
 par O
 le O
-choléra B-DIS
+choléra B-CROP
 . O
 
 """""""""" O
@@ -1974,7 +1974,7 @@ L O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 ne O
 cesse O
 de O
@@ -2025,7 +2025,7 @@ politique O
 . O
 
 Le O
-choléra B-DIS
+choléra B-CROP
 , O
 Mugabe O
 et O
@@ -2053,7 +2053,7 @@ une O
 grave O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 . O
 
 Les O
@@ -2112,7 +2112,7 @@ une O
 grave O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 . O
 
 Les O
@@ -2477,7 +2477,7 @@ par O
 une O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 ? O
 
 Si O
@@ -2777,8 +2777,8 @@ fr O
 Chińczyk O
 zmarł O
 na O
-ptasią B-DIS
-grypę B-DIS
+ptasią B-CROP
+grypę B-CROP
 Władze O
 sanitarne O
 chińskiego O
@@ -2797,8 +2797,8 @@ osoba O
 zmarła O
 na O
 skutek O
-ptasiej B-DIS
-grypy I-DIS
+ptasiej B-CROP
+grypy I-CROP
 . O
 
 Był O
@@ -2916,7 +2916,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 Le O
 gouvernement O
 du O
@@ -2933,7 +2933,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 qui O
 a O
 déjà O
@@ -3028,7 +3028,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 ( O
 . O
 . O
@@ -3174,7 +3174,7 @@ OCHA O
 546 O
 cas O
 de O
-choléra B-DIS
+choléra B-CROP
 ont O
 été O
 enregistrés O
@@ -3442,7 +3442,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 a O
 gagné O
 l O
@@ -3549,7 +3549,7 @@ Mugabe O
 prétend O
 que O
 le O
-choléra B-DIS
+choléra B-CROP
 est O
 terminé O
 , O
@@ -3571,7 +3571,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 , O
 qui O
 a O
@@ -3650,7 +3650,7 @@ ont O
 maintenant O
 enrayé O
 le O
-choléra B-DIS
+choléra B-CROP
 """""""""" O
 , O
 a O
@@ -3709,7 +3709,7 @@ zimbabwéen O
 A O
 cause O
 du O
-choléra B-DIS
+choléra B-CROP
 , O
 M O
 . O
@@ -3738,7 +3738,7 @@ y O
 a O
 plus O
 de O
-choléra B-DIS
+choléra B-CROP
 , O
 il O
 n O
@@ -3784,7 +3784,7 @@ pays O
 ) O
 avec O
 du O
-choléra B-DIS
+choléra B-CROP
 """""""""" O
 pour O
 """""""""" O
@@ -3823,7 +3823,7 @@ moins O
 783 O
 morts O
 du O
-choléra B-DIS
+choléra B-CROP
 au O
 Zimbabwe B-LOC
 depuis O
@@ -3885,7 +3885,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 n O
 ' O
 est O
@@ -4236,7 +4236,7 @@ médicales O
 . O
 
 Le O
-choléra B-DIS
+choléra B-CROP
 n O
 ' O
 est O
@@ -4431,7 +4431,7 @@ assuré O
 
 Le O
 virus O
-Ebola B-DIS
+Ebola B-CROP
 frappe O
 à O
 nouveau O
@@ -4468,7 +4468,7 @@ infectées O
 par O
 le O
 virus O
-Ebola B-DIS
+Ebola B-CROP
 . O
 
 L O
@@ -4507,7 +4507,7 @@ infectées O
 par O
 le O
 virus O
-Ebola B-DIS
+Ebola B-CROP
 . O
 
 Selon O
@@ -4609,7 +4609,7 @@ Kaluamba O
 
 Le O
 virus O
-Ebola B-DIS
+Ebola B-CROP
 doit O
 son O
 nom O
@@ -4772,7 +4772,7 @@ mourant O
 """""""""" O
 , O
 le O
-choléra B-DIS
+choléra B-CROP
 continue O
 de O
 propager O
@@ -4810,7 +4810,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 continue O
 de O
 se O
@@ -5416,7 +5416,7 @@ L O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 pourrait O
 toucher O
 quelque O
@@ -5456,7 +5456,7 @@ l O
 économie O
 . O
 
-Méningite B-DIS
+Méningite B-CROP
 . O
 
 Un O
@@ -5471,7 +5471,7 @@ Un O
 cas O
 dinfection O
 à O
-méningocoque B-DIS
+méningocoque B-CROP
 a O
 été O
 diagnostiqué O
@@ -5650,7 +5650,7 @@ ce O
 jour O
 . O
 
-Norwalk B-DIS
+Norwalk B-CROP
 like O
 virus O
 strikes O
@@ -5773,7 +5773,7 @@ Authority O
 called O
 a O
 “ O
-Norwalk B-DIS
+Norwalk B-CROP
 like O
 virus O
 , O
@@ -6019,7 +6019,7 @@ typically O
 associated O
 with O
 the O
-norovirus B-DIS
+norovirus B-CROP
 — O
 namely O
 , O
@@ -6057,12 +6057,12 @@ the O
 conference O
 delegates O
 was O
-norovirus B-DIS
+norovirus B-CROP
 — O
 also O
 known O
 as O
-Norwalk B-DIS
+Norwalk B-CROP
 — O
 all O
 signs O
@@ -6077,7 +6077,7 @@ It O
 classic O
 symptoms O
 of O
-Norwalk B-DIS
+Norwalk B-CROP
 , O
 ” O
 Germain O
@@ -6104,7 +6104,7 @@ pretty O
 sure O
 it O
 ’s O
-Norwalk B-DIS
+Norwalk B-CROP
 . O
 ” O
 Emma O
@@ -6246,7 +6246,7 @@ Anyone O
 affected O
 by O
 the O
-virus B-DIS
+virus B-CROP
 was O
 told O
 to O
@@ -6270,7 +6270,7 @@ the O
 dangers O
 of O
 the O
-norovirus B-DIS
+norovirus B-CROP
 . O
 
 Despite O
@@ -6337,7 +6337,7 @@ The O
 spread O
 of O
 the O
-virus B-DIS
+virus B-CROP
 also O
 meant O
 that O
@@ -6356,7 +6356,7 @@ meeting O
 Sunday O
 . O
 
-Norovirus B-DIS
+Norovirus B-CROP
 is O
 highly O
 contagious O
@@ -6393,7 +6393,7 @@ room O
 over O
 worries O
 the O
-virus B-DIS
+virus B-CROP
 would O
 spread O
 throughout O
@@ -6433,7 +6433,7 @@ hotel O
 already O
 had O
 the O
-virus B-DIS
+virus B-CROP
 , O
 which O
 likely O
@@ -6452,7 +6452,7 @@ confined O
 space O
 . O
 
-Choléra B-DIS
+Choléra B-CROP
 au O
 Zimbabwe B-LOC
 : O
@@ -6486,7 +6486,7 @@ face O
 la O
 flambée O
 de O
-choléra B-DIS
+choléra B-CROP
 au O
 Zimbabwe B-LOC
 en O
@@ -6561,7 +6561,7 @@ complet O
 pour O
 traiter O
 le O
-choléra B-DIS
+choléra B-CROP
 , O
 pesant O
 plus O
@@ -6646,7 +6646,7 @@ unités O
 de O
 traitement O
 du O
-choléra B-DIS
+choléra B-CROP
 """""""""" O
 , O
 et O
@@ -6678,7 +6678,7 @@ santé O
 la O
 propagation O
 du O
-choléra B-DIS
+choléra B-CROP
 a O
 été O
 aggravée O
@@ -6730,7 +6730,7 @@ au O
 décmebre O
 , O
 le O
-choléra B-DIS
+choléra B-CROP
 a O
 fait O
 plus O
@@ -6759,7 +6759,7 @@ organisations O
 humanitaires O
 . O
 
-Choléra B-DIS
+Choléra B-CROP
 au O
 Zimbabwe B-LOC
 : O
@@ -6781,7 +6781,7 @@ sans O
 précédent O
 """""""""" O
 de O
-choléra B-DIS
+choléra B-CROP
 au O
 Zimbabwe B-LOC
 continue O
@@ -6891,7 +6891,7 @@ ajouté O
 
 """""""""" O
 Le O
-choléra B-DIS
+choléra B-CROP
 est O
 la O
 maladie O
@@ -7081,7 +7081,7 @@ Zimbabwe B-LOC
 au O
 temps O
 du O
-choléra B-DIS
+choléra B-CROP
 , O
 on O
 vient O
@@ -7199,7 +7199,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 a O
 déjà O
 tué O
@@ -8016,12 +8016,12 @@ millier O
 de O
 morts O
 du O
-choléra B-DIS
+choléra B-CROP
 ( O
 ONU O
 ) O
 Le O
-choléra B-DIS
+choléra B-CROP
 a O
 fait O
 1 O
@@ -8351,7 +8351,7 @@ l O
 . O
 
 Le O
-choléra B-DIS
+choléra B-CROP
 a O
 déjà O
 fait O
@@ -8365,7 +8365,7 @@ L O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 continue O
 de O
 faire O
@@ -8916,7 +8916,7 @@ décès O
 provoqués O
 par O
 la O
-rougeole B-DIS
+rougeole B-CROP
 ont O
 baissé O
 de O
@@ -8933,10 +8933,10 @@ décès O
 causés O
 par O
 la O
-rougeole B-DIS
+rougeole B-CROP
 dans O
 le O
-monde B-DIS
+monde B-CROP
 a O
 chuté O
 de O
@@ -8990,7 +8990,7 @@ mondiaux O
 dus O
 à O
 la O
-rougeole B-DIS
+rougeole B-CROP
 sont O
 à O
 mettre O
@@ -9084,7 +9084,7 @@ mortalité O
 causée O
 par O
 la O
-rougeole B-DIS
+rougeole B-CROP
 ny O
 a O
 diminué O
@@ -9120,14 +9120,14 @@ des O
 décès O
 mondiaux O
 par O
-rougeole B-DIS
+rougeole B-CROP
 . O
 
 Très O
 contagieuse O
 , O
 la O
-rougeole B-DIS
+rougeole B-CROP
 est O
 caractérisée O
 par O
@@ -9163,7 +9163,7 @@ l O
 ' O
 épidémie O
 de O
-gastro B-DIS
+gastro B-CROP
 a O
 démarré O
 L O
@@ -9175,7 +9175,7 @@ diarrhée O
 aiguë O
 , O
 ou O
-gastro B-DIS
+gastro B-CROP
 entérite O
 , O
 a O
@@ -9472,7 +9472,7 @@ Le O
 Pays O
 . O
 
-Choléra B-DIS
+Choléra B-CROP
 : O
 la O
 Croix O
@@ -9525,7 +9525,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 qui O
 fait O
 actuellement O
@@ -9610,7 +9610,7 @@ de O
 lutte O
 contre O
 le O
-choléra B-DIS
+choléra B-CROP
 . O
 
 Depuis O
@@ -9627,7 +9627,7 @@ face O
 une O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 qui O
 a O
 déjà O
@@ -9709,11 +9709,11 @@ ne O
 devrait O
 mourir O
 du O
-choléra B-DIS
+choléra B-CROP
 """""""""" O
 """""""""" O
 Le O
-choléra B-DIS
+choléra B-CROP
 est O
 une O
 maladie O
@@ -9735,7 +9735,7 @@ ne O
 devrait O
 mourir O
 du O
-choléra B-DIS
+choléra B-CROP
 """""""""" O
 , O
 a O
@@ -9779,7 +9779,7 @@ gens O
 qui O
 meurent O
 du O
-choléra B-DIS
+choléra B-CROP
 est O
 supérieure O
 à O
@@ -9798,7 +9798,7 @@ Pour O
 dire O
 que O
 le O
-choléra B-DIS
+choléra B-CROP
 est O
 sous O
 contrôle O
@@ -9881,7 +9881,7 @@ d O
 un O
 cas O
 de O
-leptospirose B-DIS
+leptospirose B-CROP
 chez O
 un O
 agent O
@@ -9949,7 +9949,7 @@ d O
 porteur O
 de O
 la O
-leptospirose B-DIS
+leptospirose B-CROP
 """""""""" O
 ne O
 permettent O
@@ -9992,7 +9992,7 @@ confirmer O
 ce O
 cas O
 de O
-leptospirose B-DIS
+leptospirose B-CROP
 """""""""" O
 , O
 indique O
@@ -10057,7 +10057,7 @@ le O
 deuxième O
 cas O
 de O
-leptospirose B-DIS
+leptospirose B-CROP
 mentionné O
 par O
 la O
@@ -10302,7 +10302,7 @@ pour O
 enrayer O
 l`épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 qui O
 ravage O
 son O
@@ -10383,7 +10383,7 @@ l`avoir O
 contaminé O
 avec O
 du O
-choléra B-DIS
+choléra B-CROP
 et O
 de O
 l`anthrax O
@@ -10401,7 +10401,7 @@ militaire O
 Concernant O
 l`épidémie O
 du O
-choléra B-DIS
+choléra B-CROP
 , O
 le O
 gouvernement O
@@ -10697,7 +10697,7 @@ forum O
 за O
 жизнь O
 заболевшего O
-бешенством B-DIS
+бешенством B-CROP
 мальчика O
 . O
 
@@ -10981,7 +10981,7 @@ forum O
 подозрении O
 на O
 заболевание O
-бешенством B-DIS
+бешенством B-CROP
 пациенту O
 нужно O
 как O
@@ -11065,7 +11065,7 @@ décès O
 dus O
 à O
 la O
-rougeole B-DIS
+rougeole B-CROP
 entre O
 2000 O
 et O
@@ -11077,7 +11077,7 @@ décès O
 dus O
 à O
 la O
-rougeole B-DIS
+rougeole B-CROP
 dans O
 le O
 monde B-LOC
@@ -11132,7 +11132,7 @@ mondiaux O
 provoqués O
 par O
 la O
-rougeole B-DIS
+rougeole B-CROP
 sont O
 à O
 mettre O
@@ -11231,7 +11231,7 @@ mortalité O
 due O
 à O
 la O
-rougeole B-DIS
+rougeole B-CROP
 n O
 ' O
 y O
@@ -11271,14 +11271,14 @@ des O
 décès O
 mondiaux O
 par O
-rougeole B-DIS
+rougeole B-CROP
 . O
 
 Très O
 contagieuse O
 , O
 la O
-rougeole B-DIS
+rougeole B-CROP
 est O
 caractérisée O
 par O
@@ -11453,7 +11453,7 @@ terme O
 à O
 l`épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 et O
 assurer O
 de O
@@ -11542,7 +11542,7 @@ expliqué O
 
 L`épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 , O
 qui O
 a O
@@ -11648,7 +11648,7 @@ Zimbabwe B-LOC
 Les O
 malades O
 du O
-choléra B-DIS
+choléra B-CROP
 meurent O
 d`une O
 déshydratation O
@@ -11721,7 +11721,7 @@ pluies O
 εξουδετερώσουν O
 το O
 ξέσπασμα O
-ιλαράς B-DIS
+ιλαράς B-CROP
 , O
 προειδοποιεί O
 ο O
@@ -11783,7 +11783,7 @@ pluies O
 
 Οι O
 εστίες O
-ιλαράς B-DIS
+ιλαράς B-CROP
 στην O
 Ευρώπη B-LOC
 προκάλεσαν O
@@ -11885,7 +11885,7 @@ Jakab O
 η O
 αύξηση O
 της O
-ιλαράς B-DIS
+ιλαράς B-CROP
 σε O
 ευρωπαϊκές O
 χώρες O
@@ -11939,7 +11939,7 @@ Jakab O
 του O
 ιού O
 της O
-ιλαράς B-DIS
+ιλαράς B-CROP
 πριν O
 την O
 έλευση O
@@ -12007,7 +12007,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 qui O
 a O
 fait O
@@ -12114,7 +12114,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 dans O
 le O
 pays O
@@ -12526,7 +12526,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 qui O
 a O
 fait O
@@ -12637,7 +12637,7 @@ ces O
 prochaines O
 semaines O
 le O
-choléra B-DIS
+choléra B-CROP
 et O
 environ O
 cinq O
@@ -12655,7 +12655,7 @@ aide O
 alimentaire O
 . O
 
-Choléra B-DIS
+Choléra B-CROP
 : O
 le O
 Zimbabwe B-LOC
@@ -12686,7 +12686,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 qui O
 a O
 déjà O
@@ -12789,7 +12789,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 et O
 les O
 dysfonctionnements O
@@ -13008,7 +13008,7 @@ de O
 personnes O
 mortes O
 du O
-choléra B-DIS
+choléra B-CROP
 était O
 encore O
 bas O
@@ -13227,7 +13227,7 @@ L O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 ne O
 cesse O
 de O
@@ -13488,7 +13488,7 @@ a O
 """""""""" O
 plus O
 de O
-choléra B-DIS
+choléra B-CROP
 """""""""" O
 au O
 Zimbabwe B-LOC
@@ -13574,7 +13574,7 @@ est O
 épargnée O
 par O
 le O
-choléra B-DIS
+choléra B-CROP
 . O
 
 """""""""" O
@@ -13611,7 +13611,7 @@ des O
 risques O
 que O
 le O
-choléra B-DIS
+choléra B-CROP
 ne O
 se O
 propage O
@@ -13670,7 +13670,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 , O
 a O
 annoncé O
@@ -13822,7 +13822,7 @@ technique O
 pour O
 combattre O
 le O
-choléra B-DIS
+choléra B-CROP
 """""""""" O
 . O
 
@@ -13942,7 +13942,7 @@ dégradé O
 пять O
 подозрений O
 на O
-грипп B-DIS
+грипп B-CROP
 — O
 два O
 у O
@@ -14035,7 +14035,7 @@ dégradé O
 5 O
 подозрений O
 на O
-грипп B-DIS
+грипп B-CROP
 — O
 2 O
 у O
@@ -14280,7 +14280,7 @@ dégradé O
 , O
 а O
 если O
-простуда B-DIS
+простуда B-CROP
 настигла O
 , O
 всем O
@@ -14395,7 +14395,7 @@ dégradé O
 . O
 
 Поскольку O
-грипп B-DIS
+грипп B-CROP
 — O
 серьезное O
 заболевание O
@@ -14420,8 +14420,8 @@ nouvelle O
 victime O
 de O
 la O
-grippe B-DIS
-aviaire I-DIS
+grippe B-CROP
+aviaire I-CROP
 en O
 Egypte B-LOC
 Une O
@@ -14442,8 +14442,8 @@ virus O
 H5N1 O
 de O
 la O
-grippe B-DIS
-aviaire I-DIS
+grippe B-CROP
+aviaire I-CROP
 , O
 portant O
 à O
@@ -14554,8 +14554,8 @@ février O
 2006 O
 de O
 la O
-grippe B-DIS
-aviaire I-DIS
+grippe B-CROP
+aviaire I-CROP
 en O
 Egypte B-LOC
 , O
@@ -14569,8 +14569,8 @@ plus O
 touchés O
 par O
 la O
-grippe B-DIS
-aviaire I-DIS
+grippe B-CROP
+aviaire I-CROP
 . O
 
 Samiha O
@@ -14671,8 +14671,8 @@ des O
 victimes O
 de O
 la O
-grippe B-DIS
-aviaire I-DIS
+grippe B-CROP
+aviaire I-CROP
 en O
 Egypte B-LOC
 , O
@@ -14834,8 +14834,8 @@ le O
 traitement O
 contre O
 la O
-grippe B-DIS
-aviaire I-DIS
+grippe B-CROP
+aviaire I-CROP
 doit O
 être O
 administré O
@@ -14866,8 +14866,8 @@ du O
 virus O
 de O
 la O
-grippe B-DIS
-aviaire I-DIS
+grippe B-CROP
+aviaire I-CROP
 a O
 tué O
 près O
@@ -14933,7 +14933,7 @@ meurtrière O
 . O
 
 Le O
-paludisme B-DIS
+paludisme B-CROP
 a O
 tué O
 1 O
@@ -14964,7 +14964,7 @@ de O
 décès O
 dus O
 au O
-paludisme B-DIS
+paludisme B-CROP
 est O
 de O
 1600 O
@@ -15006,7 +15006,7 @@ eu O
 décès O
 dus O
 au O
-paludisme B-DIS
+paludisme B-CROP
 comme O
 souvent O
 indiqué O
@@ -15035,7 +15035,7 @@ de O
 lutte O
 contre O
 le O
-paludisme B-DIS
+paludisme B-CROP
 ( O
 PNLP O
 ) O
@@ -15066,7 +15066,7 @@ La O
 lutte O
 contre O
 le O
-paludisme B-DIS
+paludisme B-CROP
 a O
 énormément O
 évolué O
@@ -15077,7 +15077,7 @@ années O
 . O
 
 Le O
-paludisme B-DIS
+paludisme B-CROP
 est O
 une O
 maladie O
@@ -15098,7 +15098,7 @@ constater O
 des O
 cas O
 de O
-paludisme B-DIS
+paludisme B-CROP
 , O
 a O
 expliqué O
@@ -15119,7 +15119,7 @@ fièvre O
 est O
 relatif O
 au O
-paludisme B-DIS
+paludisme B-CROP
 . O
 
 A O
@@ -15208,7 +15208,7 @@ plus O
 efficiente O
 contre O
 le O
-paludisme B-DIS
+paludisme B-CROP
 . O
 
 Il O
@@ -15285,7 +15285,7 @@ cas O
 traité O
 relève O
 du O
-paludisme B-DIS
+paludisme B-CROP
 ou O
 non O
 , O
@@ -15309,7 +15309,7 @@ de O
 468 O
 cas O
 de O
-paludisme B-DIS
+paludisme B-CROP
 traités O
 en O
 juillet O
@@ -15326,7 +15326,7 @@ seuls O
 646 O
 cas O
 de O
-paludisme B-DIS
+paludisme B-CROP
 confirmés O
 ont O
 été O
@@ -15427,7 +15427,7 @@ charge O
 du O
 cas O
 de O
-paludisme B-DIS
+paludisme B-CROP
 à O
 domicile O
 ( O
@@ -15472,7 +15472,7 @@ AD O
 
 EPIDEMIE O
 DE O
-CHOLERA B-DIS
+CHOLERA B-CROP
 AU O
 ZIMBABWE B-LOC
 : O
@@ -15503,7 +15503,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 , O
 qui O
 a O
@@ -15543,7 +15543,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 , O
 . O
 . O
@@ -15563,7 +15563,7 @@ hier O
 que O
 lépidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 , O
 qui O
 a O
@@ -15588,7 +15588,7 @@ Bretagne O
 """""""""" O
 Lépidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 au O
 Zimbabwe B-LOC
 est O
@@ -15668,7 +15668,7 @@ fin O
 de O
 lépidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 mais O
 son O
 porte O
@@ -15733,12 +15733,12 @@ et O
 700 O
 cas O
 de O
-choléra B-DIS
+choléra B-CROP
 . O
 
 """""""""" O
 Le O
-choléra B-DIS
+choléra B-CROP
 est O
 une O
 attaque O
@@ -15812,7 +15812,7 @@ mondiale O
 , O
 propagé O
 le O
-choléra B-DIS
+choléra B-CROP
 et O
 lanthrax O
 afin O
@@ -15866,8 +15866,8 @@ Images O
 вспыхнула O
 эпидемия O
 лихорадкиВирус O
-птичьего B-DIS
-гриппа I-DIS
+птичьего B-CROP
+гриппа I-CROP
 в O
 Китае B-LOC
 : O
@@ -16086,7 +16086,7 @@ Times O
 птицы O
 умерли O
 от O
-птичьего B-DIS
+птичьего B-CROP
 лейкоза O
 и O
 инфекционного O
@@ -16149,8 +16149,8 @@ H5N1 O
 обнаружен O
 мутантный O
 штамм O
-птичьего B-DIS
-гриппа I-DIS
+птичьего B-CROP
+гриппа I-CROP
 — O
 2 O
 . O
@@ -16202,8 +16202,8 @@ H5N1 O
 в O
 декабре O
 от O
-птичьего B-DIS
-гриппа I-DIS
+птичьего B-CROP
+гриппа I-CROP
 умерло O
 три O
 курицы O
@@ -16565,7 +16565,7 @@ denies O
 infecting O
 women O
 with O
-HIV B-DIS
+HIV B-CROP
 A O
 BASINGSTOKE B-LOC
 man O
@@ -16579,7 +16579,7 @@ two O
 women O
 with O
 the O
-HIV B-DIS
+HIV B-CROP
 virus O
 . O
 
@@ -16618,7 +16618,7 @@ Assumang O
 , O
 who O
 is O
-HIV B-DIS
+HIV B-CROP
 positive O
 , O
 had O
@@ -16703,30 +16703,30 @@ days O
 
 Epidémie O
 La O
-grippe B-DIS
+grippe B-CROP
 monte O
 en O
 puissance O
 , O
 la O
-gastro B-DIS
+gastro B-CROP
 en O
 décrue O
 La O
-grippe B-DIS
+grippe B-CROP
 monte O
 en O
 puissance O
 , O
 la O
-gastro B-DIS
+gastro B-CROP
 en O
 décrue O
 L O
 ' O
 épidémie O
 de O
-grippe B-DIS
+grippe B-CROP
 est O
 bien O
 installée O
@@ -16752,7 +16752,7 @@ semaines O
 
 Pour O
 la O
-gastro B-DIS
+gastro B-CROP
 , O
 le O
 pire O
@@ -16775,7 +16775,7 @@ leur O
 médecin O
 pour O
 une O
-gastro B-DIS
+gastro B-CROP
 entérite O
 , O
 le O
@@ -16797,7 +16797,7 @@ La O
 dernière O
 épidémie O
 de O
-grippe B-DIS
+grippe B-CROP
 hivernale O
 avait O
 duré O
@@ -16879,7 +16879,7 @@ un O
 médecin O
 pour O
 une O
-grippe B-DIS
+grippe B-CROP
 . O
 
 Et O
@@ -16922,7 +16922,7 @@ l O
 incidence O
 de O
 la O
-grippe B-DIS
+grippe B-CROP
 clinique O
 a O
 été O
@@ -17187,7 +17187,7 @@ plus O
 touchées O
 par O
 la O
-grippe B-DIS
+grippe B-CROP
 . O
 
 Il O
@@ -17328,7 +17328,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 qui O
 a O
 déjà O
@@ -17404,7 +17404,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 qui O
 sévit O
 dans O
@@ -17452,7 +17452,7 @@ sanitaires O
 . O
 
 Le O
-choléra B-DIS
+choléra B-CROP
 se O
 proliférant O
 dans O
@@ -17489,7 +17489,7 @@ et O
 jeudi O
 , O
 le O
-choléra B-DIS
+choléra B-CROP
 a O
 fait O
 81 O
@@ -17970,11 +17970,11 @@ en O
 заболеваемость O
 гриппом O
 и O
-ОРВИ B-DIS
+ОРВИ B-CROP
 Число O
 зарегистрированных O
 случаев O
-ОРВИ B-DIS
+ОРВИ B-CROP
 в O
 Челябинской B-LOC
 области O
@@ -18134,7 +18134,7 @@ REGNUM O
 случаев O
 становятся O
 вирусы O
-парагриппа B-DIS
+парагриппа B-CROP
 и O
 аденовирусы O
 . O
@@ -18144,7 +18144,7 @@ REGNUM O
 για O
 τα O
 κρούσματα O
-ελονοσίας B-DIS
+ελονοσίας B-CROP
 στην O
 Πελοπόννησο O
 Ο O
@@ -18338,7 +18338,7 @@ REGNUM O
 περί O
 θανατηφόρων O
 περιστατικών O
-ελονοσίας B-DIS
+ελονοσίας B-CROP
 στην O
 περιοχή O
 . O
@@ -18353,7 +18353,7 @@ REGNUM O
 δηλώθηκαν O
 57 O
 κρούσματα O
-ελονοσίας B-DIS
+ελονοσίας B-CROP
 : O
 27 O
 σε O
@@ -18366,7 +18366,7 @@ REGNUM O
 χώρες O
 ενδημικές O
 για O
-ελονοσία B-DIS
+ελονοσία B-CROP
 7 O
 σε O
 αλλοδαπούς O
@@ -18421,7 +18421,7 @@ vivax O
 που O
 οφείλονται O
 στην O
-ελονοσία B-DIS
+ελονοσία B-CROP
 . O
 
 Περίπτωση O
@@ -18749,7 +18749,7 @@ est O
 porteur O
 de O
 la O
-leptospirose B-DIS
+leptospirose B-CROP
 , O
 une O
 maladie O
@@ -18839,7 +18839,7 @@ le O
 monde O
 , O
 la O
-leptospirose B-DIS
+leptospirose B-CROP
 est O
 une O
 maladie O
@@ -19084,7 +19084,7 @@ rats O
 . O
 
 Заболевания O
-гриппом B-DIS
+гриппом B-CROP
 в O
 Кабардино O
 Балкарии O
@@ -19097,9 +19097,9 @@ rats O
 ситуация O
 по O
 заболеваемости O
-гриппом B-DIS
+гриппом B-CROP
 и O
-ОРВИ B-DIS
+ОРВИ B-CROP
 в O
 Кабардино O
 Балкарии O
@@ -19127,7 +19127,7 @@ REGNUM O
 
 """""""""" O
 Заболеваемость O
-простудными B-DIS
+простудными B-CROP
 заболеваниями O
 ниже O
 эпидемических O
@@ -19237,9 +19237,9 @@ REGNUM O
 эпидпорогов O
 по O
 заболеваемости O
-гриппом B-DIS
+гриппом B-CROP
 и O
-ОРВИ B-DIS
+ОРВИ B-CROP
 по O
 Нальчику O
 на O
@@ -19301,8 +19301,8 @@ Exclusif O
 Des O
 cas O
 de O
-fièvre B-DIS
-jaune I-DIS
+fièvre B-CROP
+jaune I-CROP
 et O
 de O
 méningite O
@@ -19314,8 +19314,8 @@ et O
 Tougué O
 © O
 La O
-fièvre B-DIS
-jaune I-DIS
+fièvre B-CROP
+jaune I-CROP
 et O
 la O
 méningite O
@@ -19390,8 +19390,8 @@ novembre O
 cas O
 suspects O
 de O
-fièvre B-DIS
-jaune I-DIS
+fièvre B-CROP
+jaune I-CROP
 ont O
 été O
 enregistrés O
@@ -19686,8 +19686,8 @@ potentiel O
 y O
 compris O
 la O
-Fièvre B-DIS
-jaune I-DIS
+Fièvre B-CROP
+jaune I-CROP
 et O
 la O
 méningite O
@@ -19697,7 +19697,7 @@ L O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 a O
 déjà O
 fait O
@@ -19716,7 +19716,7 @@ L O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 qui O
 s O
 ' O
@@ -19770,7 +19770,7 @@ de O
 personnes O
 atteintes O
 du O
-choléra B-DIS
+choléra B-CROP
 se O
 montent O
 désormais O
@@ -19826,7 +19826,7 @@ de O
 cette O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 au O
 Zimbabwe B-LOC
 : O
@@ -19879,7 +19879,7 @@ bilan O
 de O
 morts O
 du O
-choléra B-DIS
+choléra B-CROP
 , O
 les O
 agences O
@@ -19948,7 +19948,7 @@ région O
 Κένυα B-LOC
 : O
 Επιδημία O
-χολέρας B-DIS
+χολέρας B-CROP
 σε O
 προσφυγικό O
 καταυλισμό O
@@ -19965,7 +19965,7 @@ région O
 του O
 ΟΗΕ O
 Επιδημία O
-χολέρας B-DIS
+χολέρας B-CROP
 ξέσπασε O
 στον O
 μεγαλύτερο O
@@ -20035,7 +20035,7 @@ région O
 Υπάρχουν O
 60 O
 κρούσματα O
-χολέρας B-DIS
+χολέρας B-CROP
 στους O
 καταυλισμούς O
 , O
@@ -20120,7 +20120,7 @@ droits O
 de O
 lHomme O
 Le O
-choléra B-DIS
+choléra B-CROP
 progresse O
 JOHANNESBURG O
 ( O
@@ -20174,7 +20174,7 @@ ruine O
 . O
 
 Le O
-choléra B-DIS
+choléra B-CROP
 progresse O
 JOHANNESBURG O
 ( O
@@ -20251,7 +20251,7 @@ lampleur O
 et O
 lépidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 a O
 déjà O
 fait O
@@ -20498,7 +20498,7 @@ janvier O
 et O
 lépidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 ne O
 cesse O
 de O
@@ -20818,7 +20818,7 @@ il O
 déclaré O
 . O
 
-Choléra B-DIS
+Choléra B-CROP
 : O
 le O
 Zimbabwe B-LOC
@@ -20849,7 +20849,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 qui O
 a O
 déjà O
@@ -20952,7 +20952,7 @@ l O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 et O
 les O
 dysfonctionnements O
@@ -21171,7 +21171,7 @@ de O
 personnes O
 mortes O
 du O
-choléra B-DIS
+choléra B-CROP
 était O
 encore O
 bas O
@@ -21390,7 +21390,7 @@ L O
 ' O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 ne O
 cesse O
 de O
@@ -21639,7 +21639,7 @@ lettre O
 morte O
 . O
 
-H1N1 B-DIS
+H1N1 B-CROP
 Case O
 Reported O
 In O
@@ -21654,11 +21654,11 @@ hospital O
 treated O
 its O
 first O
-influenza B-DIS
-A I-DIS
+influenza B-CROP
+A I-CROP
 , O
 or O
-H1N1 B-DIS
+H1N1 B-CROP
 , O
 patient O
 over O
@@ -21677,8 +21677,8 @@ January O
 2012 O
 The O
 first O
-H1N1 B-DIS
-flu I-DIS
+H1N1 B-CROP
+flu I-CROP
 case O
 of O
 the O
@@ -21702,11 +21702,11 @@ hospital O
 treated O
 its O
 first O
-influenza B-DIS
-A I-DIS
+influenza B-CROP
+A I-CROP
 , O
 or O
-H1N1 B-DIS
+H1N1 B-CROP
 , O
 patient O
 over O
@@ -21756,7 +21756,7 @@ days O
 . O
 
 The O
-flu B-DIS
+flu B-CROP
 is O
 an O
 airborne O
@@ -21776,7 +21776,7 @@ lungs O
 Doctors O
 recommend O
 a O
-flu B-DIS
+flu B-CROP
 shot O
 to O
 prevent O
@@ -21832,7 +21832,7 @@ S流 O
 推出 O
 「 O
 公費 O
-流感 B-DIS
+流感 B-CROP
 抗病 O
 毒藥 O
 劑合 O
@@ -21859,7 +21859,7 @@ S查 O
 可查 O
 詢 O
 公費 O
-流感 B-DIS
+流感 B-CROP
 藥 O
 劑院 O
 所 O
@@ -21873,7 +21873,7 @@ S查 O
 診時 O
 刻表 O
 、 O
-流感 B-DIS
+流感 B-CROP
 防治 O
 等 O
 資訊 O
@@ -21889,7 +21889,7 @@ DF O
 ， O
 一手 O
 搞定 O
-流感 B-DIS
+流感 B-CROP
 醫療 O
 服務 O
 資訊 O
@@ -21916,7 +21916,7 @@ DF O
 醫療 O
 配置 O
 公費克 O
-流感 B-DIS
+流感 B-CROP
 ， O
 高醫 O
 、 O
@@ -22003,7 +22003,7 @@ congrès O
 annuel O
 , O
 le O
-choléra B-DIS
+choléra B-CROP
 s O
 ' O
 étend O
@@ -22051,7 +22051,7 @@ affronte O
 une O
 épidémie O
 de O
-choléra B-DIS
+choléra B-CROP
 . O
 
 Selon O
@@ -22123,7 +22123,7 @@ pour O
 lutter O
 contre O
 le O
-choléra B-DIS
+choléra B-CROP
 , O
 transmis O
 par O
@@ -22302,7 +22302,7 @@ du O
 parti O
 , O
 du O
-choléra B-DIS
+choléra B-CROP
 , O
 de O
 l O
@@ -22778,7 +22778,7 @@ australe O
 Одессе B-LOC
 официально O
 болеют O
-ОРВИ B-DIS
+ОРВИ B-CROP
 почти O
 5 O
 тысяч O
@@ -22812,10 +22812,10 @@ australe O
 помощью O
 с O
 симптомами O
-острой B-DIS
-респираторной I-DIS
-вирусной I-DIS
-инфекции I-DIS
+острой B-CROP
+респираторной I-CROP
+вирусной I-CROP
+инфекции I-CROP
 в O
 лечебно O
 профилактические O
