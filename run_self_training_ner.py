@@ -1,21 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import numpy as np
-import torch
-import random
-manualSeed = 1
 
-np.random.seed(manualSeed)
-random.seed(manualSeed)
-torch.manual_seed(manualSeed)
-# if you are suing GPU
-torch.cuda.manual_seed(manualSeed)
-torch.cuda.manual_seed_all(manualSeed)
-
-
-torch.backends.cudnn.enabled = False 
-torch.backends.cudnn.benchmark = False
-torch.backends.cudnn.deterministic = True
 import argparse
 import glob
 import logging
@@ -27,7 +12,8 @@ import json
 import numpy as np
 import torch
 from torch.nn import CrossEntropyLoss
-from torch.utils.data import DataLoader, RandomSampler
+from torch.utils.data import DataLoader, RandomSampler, ConcatDataset
+
 from torch.utils.data.distributed import DistributedSampler
 from tqdm import tqdm, trange
 import sys
@@ -53,12 +39,11 @@ from transformers import (
     get_linear_schedule_with_warmup,
 )
 
-# from modeling_roberta import XLMRobertaForTokenClassification_v2
 from modeling_roberta_xlm import XLMRobertaForTokenClassification_v2
-from modeling_roberta import RobertaForTokenClassification_v2
+# from modeling_roberta import RobertaForTokenClassification_v2
 from modeling_bert import BERTForTokenClassification_v2
 from data_utils import load_and_cache_examples, get_labels
-from model_utils import mt_update, get_mt_loss, opt_grad
+from model_utils import multi_source_label_refine, soft_frequency, mt_update, get_mt_loss, opt_grad
 from eval import evaluate
 
 try:
@@ -85,7 +70,6 @@ MODEL_CLASSES = {
     # "xlmroberta": (XLMRobertaConfig, XLMRobertaForTokenClassification, XLMRobertaTokenizer),
 }
 
-
 def set_seed(args):
     random.seed(args.seed)
     np.random.seed(args.seed)
@@ -93,20 +77,16 @@ def set_seed(args):
     if args.n_gpu > 0:
         torch.cuda.manual_seed_all(args.seed)
 
-def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
-    """ Train the model """
-    if args.local_rank in [-1, 0]:
-        tb_writer = SummaryWriter(os.path.join(args.output_dir,'tfboard'))
+def initialize(args, model_class, config, t_total, epoch):
 
-    args.train_batch_size = args.per_gpu_train_batch_size * max(1, args.n_gpu)
-    train_sampler = RandomSampler(train_dataset) if args.local_rank == -1 else DistributedSampler(train_dataset)
-    train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.train_batch_size)
+    model = model_class.from_pretrained(
+        args.model_name_or_path,
+        from_tf=bool(".ckpt" in args.model_name_or_path),
+        config=config,
+        cache_dir=args.cache_dir if args.cache_dir else None,
+    )
 
-    if args.max_steps > 0:
-        t_total = args.max_steps
-        args.num_train_epochs = args.max_steps // (len(train_dataloader) // args.gradient_accumulation_steps) + 1
-    else:
-        t_total = len(train_dataloader) // args.gradient_accumulation_steps * args.num_train_epochs
+    model.to(args.device)
 
     # Prepare optimizer and schedule (linear warmup and decay)
     no_decay = ["bias", "LayerNorm.weight"]
@@ -124,12 +104,13 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
     )
 
     # Check if saved optimizer or scheduler states exist
-    if os.path.isfile(os.path.join(args.model_name_or_path, "optimizer.pt")) and os.path.isfile(
-        os.path.join(args.model_name_or_path, "scheduler.pt")
-    ):
-        # Load in optimizer and scheduler states
-        optimizer.load_state_dict(torch.load(os.path.join(args.model_name_or_path, "optimizer.pt")))
-        scheduler.load_state_dict(torch.load(os.path.join(args.model_name_or_path, "scheduler.pt")))
+    if epoch == 0:
+        if os.path.isfile(os.path.join(args.model_name_or_path, "optimizer.pt")) and os.path.isfile(
+            os.path.join(args.model_name_or_path, "scheduler.pt")
+        ):
+            # Load in optimizer and scheduler states
+            optimizer.load_state_dict(torch.load(os.path.join(args.model_name_or_path, "optimizer.pt")))
+            scheduler.load_state_dict(torch.load(os.path.join(args.model_name_or_path, "scheduler.pt")))
 
     if args.fp16:
         try:
@@ -138,7 +119,7 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
             raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
         model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
 
-    # multi-gpu training (should be after apex fp16 initialization)
+    # Multi-gpu training (should be after apex fp16 initialization)
     if args.n_gpu > 1:
         model = torch.nn.DataParallel(model)
 
@@ -148,6 +129,26 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
             model, device_ids=[args.local_rank], output_device=args.local_rank, find_unused_parameters=True
         )
 
+    model.zero_grad()
+    return model, optimizer, scheduler
+
+def train(args, train_dataset, model_class, config, tokenizer, labels, pad_token_label_id):
+    """ Train the model """
+
+    if args.local_rank in [-1, 0]:
+        tb_writer = SummaryWriter(os.path.join(args.output_dir,'tfboard'))
+
+    args.train_batch_size = args.per_gpu_train_batch_size * max(1, args.n_gpu)
+    train_sampler = RandomSampler(train_dataset) if args.local_rank == -1 else DistributedSampler(train_dataset)
+    train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.train_batch_size)
+
+    if args.max_steps > 0:
+        t_total = args.max_steps
+        args.num_train_epochs = args.max_steps // (len(train_dataloader) // args.gradient_accumulation_steps) + 1
+    else:
+        t_total = len(train_dataloader) // args.gradient_accumulation_steps * args.num_train_epochs
+
+    model, optimizer, scheduler = initialize(args, model_class, config, t_total, 0)
     # Train!
     logger.info("***** Running training *****")
     logger.info("  Num examples = %d", len(train_dataset))
@@ -165,23 +166,23 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
     global_step = 0
     epochs_trained = 0
     steps_trained_in_current_epoch = 0
+#    import pdb;pdb.set_trace()
     # Check if continuing training from a checkpoint
     if os.path.exists(args.model_name_or_path):
-        try:
-            # set global_step to gobal_step of last saved checkpoint from model path
-            global_step = int(args.model_name_or_path.split("-")[-1].split("/")[0])
-            epochs_trained = global_step // (len(train_dataloader) // args.gradient_accumulation_steps)
-            steps_trained_in_current_epoch = global_step % (len(train_dataloader) // args.gradient_accumulation_steps)
+        # set global_step to gobal_step of last saved checkpoint from model path
+        global_step = int(args.model_name_or_path.split("-")[-1].split("/")[0])
+        
+#        global_step = int(args.model_name_or_path.split("-")[-1].split("/")[0])
+        
+        epochs_trained = global_step // (len(train_dataloader) // args.gradient_accumulation_steps)
+        steps_trained_in_current_epoch = global_step % (len(train_dataloader) // args.gradient_accumulation_steps)
 
-            logger.info("  Continuing training from checkpoint, will skip to saved global_step")
-            logger.info("  Continuing training from epoch %d", epochs_trained)
-            logger.info("  Continuing training from global step %d", global_step)
-            logger.info("  Will skip the first %d steps in the first epoch", steps_trained_in_current_epoch)
-        except:
-            logger.warning(f"Unable to recover training step from {args.model_name_or_path}")
+        logger.info("  Continuing training from checkpoint, will skip to saved global_step")
+        logger.info("  Continuing training from epoch %d", epochs_trained)
+        logger.info("  Continuing training from global step %d", global_step)
+        logger.info("  Will skip the first %d steps in the first epoch", steps_trained_in_current_epoch)
 
     tr_loss, logging_loss = 0.0, 0.0
-    model.zero_grad()
     train_iterator = trange(
         epochs_trained, int(args.num_train_epochs), desc="Epoch", disable=args.local_rank not in [-1, 0]
     )
@@ -189,9 +190,10 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
     best_dev, best_test = [0, 0, 0], [0, 0, 0]
     if args.mt:
         teacher_model = model
-    
+    self_training_teacher_model = model
 
     for epoch in train_iterator:
+
         epoch_iterator = tqdm(train_dataloader, desc="Iteration", disable=args.local_rank not in [-1, 0])
         for step, batch in enumerate(epoch_iterator):
 
@@ -202,16 +204,43 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
 
             model.train()
             batch = tuple(t.to(args.device) for t in batch)
-            inputs = {"input_ids": batch[0], "attention_mask": batch[1], "labels": batch[3]}
-            #inputs = {"input_ids": batch[0], "attention_mask": batch[1], "labels": batch[4]}
+
+            # Update labels periodically after certain begin step
+            if global_step >= args.self_training_begin_step:
+
+                # Update a new teacher periodically
+                delta = global_step - args.self_training_begin_step
+                if delta % args.self_training_period == 0:
+                    self_training_teacher_model = copy.deepcopy(model)
+                    self_training_teacher_model.eval()
+                    
+                    # Re-initialize the student model once a new teacher is obtained
+                    if args.self_training_reinit:
+                        model, optimizer, scheduler = initialize(args, model_class, config, t_total, epoch)
+
+                # Using current teacher to update the label
+                inputs = {"input_ids": batch[0], "attention_mask": batch[1]}
+                with torch.no_grad():
+                    outputs = self_training_teacher_model(**inputs)
+
+                label_mask = None
+                if args.self_training_label_mode == "hard":
+                    pred_labels = torch.argmax(outputs[0], axis=2)
+                    pred_labels, label_mask = multi_source_label_refine(args,batch[5],batch[3],pred_labels,pad_token_label_id,pred_logits=outputs[0])
+                elif args.self_training_label_mode == "soft":
+                    pred_labels = soft_frequency(logits=outputs[0], power=2)
+                    pred_labels, label_mask = multi_source_label_refine(args,batch[5],batch[3],pred_labels,pad_token_label_id)
+
+                inputs = {"input_ids": batch[0], "attention_mask": batch[1], "labels": pred_labels, "label_mask": label_mask}
+            else:
+                inputs = {"input_ids": batch[0], "attention_mask": batch[1], "labels": batch[3]}
+
             if args.model_type != "distilbert":
                 inputs["token_type_ids"] = (
-                    batch[2] if args.model_type in ["bert", "biobert", "xlnet"] else None
-                )  # XLM and RoBERTa don"t use segment_ids
+                    batch[2] if args.model_type in ["bert", "xlnet"] else None
+                ) 
 
-            # import ipdb; ipdb.set_trace()
             outputs = model(**inputs)
-
             loss, logits, final_embeds = outputs[0], outputs[1], outputs[2] # model outputs are always tuple in pytorch-transformers (see doc)
             mt_loss, vat_loss = 0, 0
 
@@ -234,8 +263,8 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
 
                 _lambda = args.mt_lambda
                 if args.mt_class != 'smart':
-                    _lambda = args.mt_lambda * min(1, math.exp(-5*(1-update_step/args.mt_rampup)**2))
-                
+                    _lambda = args.mt_lambda * min(1,math.exp(-5*(1-update_step/args.mt_rampup)**2))
+
                 if args.mt_loss_type == "embeds":
                     mt_loss = get_mt_loss(final_embeds, teacher_final_embeds.detach(), args.mt_class, _lambda)
                 else:
@@ -243,10 +272,10 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
 
             # Virtual adversarial training
             if args.vat:
-                
+
                 if args.model_type in ["roberta", "camembert", "xlmroberta"]:
                     word_embed = model.roberta.get_input_embeddings()
-                elif args.model_type in ["bert", "biobert"]:
+                elif args.model_type == "bert":
                     word_embed = model.bert.get_input_embeddings()
                 elif args.model_type == "distilbert":
                     word_embed = model.distilbert.get_input_embeddings()
@@ -257,13 +286,13 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
                     embeds = word_embed(batch[0])
                     vat_embeds = (embeds.data.detach() + embeds.data.new(embeds.size()).normal_(0, 1)*1e-5).detach()
                     vat_embeds.requires_grad_()
-                    
+
                     vat_inputs = {"inputs_embeds": vat_embeds, "attention_mask": batch[1], "labels": batch[3]}
                     if args.model_type != "distilbert":
                         inputs["token_type_ids"] = (
-                            batch[2] if args.model_type in ["bert", "biobert", "xlnet"] else None
+                            batch[2] if args.model_type in ["bert", "xlnet"] else None
                         )  # XLM and RoBERTa don"t use segment_ids
-                    
+
                     vat_outputs = model(**vat_inputs)
                     vat_logits, vat_final_embeds = vat_outputs[1], vat_outputs[2]
 
@@ -271,7 +300,7 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
                         vat_loss = get_mt_loss(vat_final_embeds, final_embeds.detach(), args.mt_class, 1)
                     else:
                         vat_loss = get_mt_loss(vat_logits, logits.detach(), args.mt_class, 1)
-                    
+
                     vat_embeds.grad = opt_grad(vat_loss, vat_embeds, optimizer)[0]
                     norm = vat_embeds.grad.norm()
 
@@ -281,13 +310,12 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
                         adv_direct = vat_embeds.grad / (vat_embeds.grad.abs().max(-1, keepdim=True)[0]+1e-4)
                         vat_embeds = vat_embeds + args.vat_eps * adv_direct
                         vat_embeds = vat_embeds.detach()
-                        
                         vat_inputs = {"inputs_embeds": vat_embeds, "attention_mask": batch[1], "labels": batch[3]}
                         if args.model_type != "distilbert":
                             inputs["token_type_ids"] = (
-                                batch[2] if args.model_type in ["bert", "biobert", "xlnet"] else None
+                                batch[2] if args.model_type in ["bert", "xlnet"] else None
                             )  # XLM and RoBERTa don"t use segment_ids
-                        
+
                         vat_outputs = model(**vat_inputs)
                         vat_logits, vat_final_embeds = vat_outputs[1], vat_outputs[2]
                         if args.vat_loss_type == "embeds":
@@ -296,8 +324,9 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
                         else:
                             vat_loss = get_mt_loss(vat_logits, logits.detach(), args.mt_class, args.vat_lambda) \
                                     + get_mt_loss(logits, vat_logits.detach(), args.mt_class, args.vat_lambda)
-            
+
             loss = loss + args.mt_beta * mt_loss + args.vat_beta * vat_loss
+            
             if args.n_gpu > 1:
                 loss = loss.mean()  # mean() to average on multi-gpu parallel training
             if args.gradient_accumulation_steps > 1:
@@ -328,7 +357,7 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
                         logger.info("***** Entropy loss: %.4f, mean teacher loss : %.4f; vat loss: %.4f *****", \
                             loss - args.mt_beta * mt_loss - args.vat_beta * vat_loss, \
                             args.mt_beta * mt_loss, args.vat_beta * vat_loss)
-                        
+
                         results, _, best_dev, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, best_dev, mode="dev", prefix='dev [Step {}/{} | Epoch {}/{}]'.format(global_step, t_total, epoch, args.num_train_epochs), verbose=False)
                         for key, value in results.items():
                             tb_writer.add_scalar("eval_{}".format(key), value, global_step)
@@ -339,7 +368,7 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
 
                         output_dirs = []
                         if args.local_rank in [-1, 0] and is_updated:
-#                            output_dirs.append(os.path.join(args.output_dir, "checkpoint-best-{}".format(global_step)))
+                            updated_self_training_teacher = True
                             output_dirs.append(os.path.join(args.output_dir, "checkpoint-best"))
 
                         if args.local_rank in [-1, 0] and args.save_steps > 0 and global_step % args.save_steps == 0:
@@ -367,17 +396,18 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
                     tb_writer.add_scalar("loss", (tr_loss - logging_loss) / args.logging_steps, global_step)
                     logging_loss = tr_loss
 
-
             if args.max_steps > 0 and global_step > args.max_steps:
                 epoch_iterator.close()
                 break
+
         if args.max_steps > 0 and global_step > args.max_steps:
             train_iterator.close()
             break
+
     if args.local_rank in [-1, 0]:
         tb_writer.close()
 
-    return global_step, tr_loss / global_step, best_dev, best_test
+    return model, global_step, tr_loss / global_step, best_dev, best_test
 
 def main():
     parser = argparse.ArgumentParser()
@@ -412,6 +442,7 @@ def main():
         help="The output directory where the model predictions and checkpoints will be written.",
     )
 
+    # Other parameters
     parser.add_argument(
         "--config_name", default="", type=str, help="Pretrained config name or path if not the same as model_name"
     )
@@ -524,12 +555,18 @@ def main():
     parser.add_argument('--vat_beta', type = float, default = 1, help = 'coefficient of the virtual adversarial training loss term.')
     parser.add_argument('--vat_loss_type', default="logits", type=str, help="subject to measure model difference, choices = [embeds, logits(default)].")
 
+    # self-training
+    parser.add_argument('--self_training_reinit', type = int, default = 0, help = 're-initialize the student model if the teacher model is updated.')
+    parser.add_argument('--self_training_begin_step', type = int, default = 900, help = 'the begin step (usually after the first epoch) to start self-training.')
+    parser.add_argument('--self_training_label_mode', type = str, default = "hard", help = 'pseudo label type. choices:[hard(default), soft].')
+    parser.add_argument('--self_training_period', type = int, default = 878, help = 'the self-training period.')
+    parser.add_argument('--self_training_hp_label', type = float, default = 0, help = 'use high precision label.')
+    parser.add_argument('--self_training_ensemble_label', type = int, default = 0, help = 'use ensemble label.')
 
-    # Use data from unlabeled data
+    # Use data from unlabeled.json
     parser.add_argument('--load_unlabeled', action="store_true", help = 'Load data from unlabeled.json.')
     parser.add_argument('--remove_labels_from_unlabeled', action="store_true", help = 'Use data from unlabeled.json, and remove their labels for semi-supervised learning')
     parser.add_argument('--rep_train_against_unlabeled', type = int, default = 1, help = 'Upsampling training data again unlabeled data. Default: 1')
-
 
     args = parser.parse_args()
 
@@ -609,33 +646,24 @@ def main():
         do_lower_case=args.do_lower_case,
         cache_dir=args.cache_dir if args.cache_dir else None,
     )
-    model = model_class.from_pretrained(
-        args.model_name_or_path,
-        from_tf=bool(".ckpt" in args.model_name_or_path),
-        config=config,
-        cache_dir=args.cache_dir if args.cache_dir else None,
-    )
 
     if args.local_rank == 0:
         torch.distributed.barrier()  # Make sure only the first process in distributed training will download model & vocab
-
-    model.to(args.device)
 
     logger.info("Training/evaluation parameters %s", args)
 
     # Training
     if args.do_train:
         train_dataset = load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode="train_50")
-#        train_dataset = torch.utils.data.ConcatDataset([train_dataset]*10)
         # import ipdb; ipdb.set_trace()
         if args.load_unlabeled:
             unlabeled_dataset = load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode="test_predictions_unlabeled_train_50", remove_labels=args.remove_labels_from_unlabeled)
             train_dataset = torch.utils.data.ConcatDataset([train_dataset]*args.rep_train_against_unlabeled + [unlabeled_dataset,])
             
-        global_step, tr_loss, best_dev, best_test = train(args, train_dataset, model, tokenizer, labels, pad_token_label_id)
+        model, global_step, tr_loss, best_dev, best_test = train(args, train_dataset, model_class, config, tokenizer, labels, pad_token_label_id)
         logger.info(" global_step = %s, average loss = %s", global_step, tr_loss)
 
-    # Saving last-practice: if you use defaults names for the model, you can reload it using from_pretrained()
+    # Saving last-practice: if you use defaults names for the model, you can reload it using from_pretrained() 
     if args.do_train and (args.local_rank == -1 or torch.distributed.get_rank() == 0):
         logger.info("Saving model checkpoint to %s", args.output_dir)
         model_to_save = (
@@ -645,7 +673,6 @@ def main():
         tokenizer.save_pretrained(args.output_dir)
         torch.save(args, os.path.join(args.output_dir, "training_args.bin"))
         torch.save(model.state_dict(), os.path.join(args.output_dir, "model.pt"))
-
     # Evaluation
     results = {}
     if args.do_eval and args.local_rank in [-1, 0]:
@@ -677,11 +704,6 @@ def main():
         tokenizer = tokenizer_class.from_pretrained(os.path.join(args.output_dir, 'checkpoint-best'), do_lower_case=args.do_lower_case)
         model = model_class.from_pretrained(os.path.join(args.output_dir, 'checkpoint-best'))
         model.to(args.device)
-
-        # tokenizer = tokenizer_class.from_pretrained(args.output_dir, do_lower_case=args.do_lower_case)
-        # model = model_class.from_pretrained(args.output_dir)
-        # model.to(args.device)
-
         best_dev, best_test = [0, 0, 0], [0, 0, 0]
         if not best_test:
             best_test = [0, 0, 0]
@@ -711,35 +733,37 @@ def main():
                         #output_line = line.split()[0] + " " + line.split()[1] + " " + "O\n"
 #                        logger.warning("Maximum sequence length exceeded: No prediction for '%s'.", line.split()[0])
                         
-#         mode_predict = "unlabeled_train_50"
-#         result, predictions, _, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, best=best_test, mode=mode_predict)
-# #        # Save results
-# #        output_test_results_file = os.path.join(args.output_dir, "test_results.txt")
-# #        with open(output_test_results_file, "w") as writer:
-# #            for key in sorted(result.keys()):
-# #                writer.write("{} = {}\n".format(key, str(result[key])))
+        mode_predict = "unlabeled_train_50"
+        result, predictions, _, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, best=best_test, mode=mode_predict)
+#        # Save results
+#        output_test_results_file = os.path.join(args.output_dir, "test_results.txt")
+#        with open(output_test_results_file, "w") as writer:
+#            for key in sorted(result.keys()):
+#                writer.write("{} = {}\n".format(key, str(result[key])))
 
-#         # Save predictions
-#         output_test_predictions_file = os.path.join(args.output_dir, "test_predictions_" + mode_predict + ".txt")
-#         with open(output_test_predictions_file, "w", encoding="utf-8") as writer:
-#             with open(os.path.join(args.data_dir, mode_predict + ".txt"), "r", encoding="utf-8") as f:
-#                 example_id = 0
-# #                import pdb;pdb.set_trace()
-# #                lines = f.readlines()
-#                 for line in f:
-#                     if line.startswith("-DOCSTART-") or line == "" or line == "\n":
-#                         writer.write(line)
-#                         if not predictions[example_id]:
-#                             example_id += 1
-#                     elif predictions[example_id]:
-#                         output_line = line.split()[0] + " " + line.split()[1] + " " + predictions[example_id].pop(0) + "\n"
-#                         writer.write(output_line)
-#                     else:
-#                         output_line = line.split()[0] + " " + line.split()[1] + " " + "O\n"
-#                         writer.write(output_line)
-# #                        logger.warning("Maximum sequence length exceeded: No prediction for '%s'.", line.split()[0])
+        # Save predictions
+        output_test_predictions_file = os.path.join(args.output_dir, "test_predictions_" + mode_predict + ".txt")
+        with open(output_test_predictions_file, "w", encoding="utf-8") as writer:
+            with open(os.path.join(args.data_dir, mode_predict + ".txt"), "r", encoding="utf-8") as f:
+                example_id = 0
+#                import pdb;pdb.set_trace()
+#                lines = f.readlines()
+                for line in f:
+                    if line.startswith("-DOCSTART-") or line == "" or line == "\n":
+                        writer.write(line)
+                        if not predictions[example_id]:
+                            example_id += 1
+                    elif predictions[example_id]:
+                        output_line = line.split()[0] + " " + line.split()[1] + " " + predictions[example_id].pop(0) + "\n"
+                        writer.write(output_line)
+                    else:
+                        output_line = line.split()[0] + " " + line.split()[1] + " " + "O\n"
+                        writer.write(output_line)
+#                        logger.warning("Maximum sequence length exceeded: No prediction for '%s'.", line.split()[0])
+
 
     return results
+
 
 
 if __name__ == "__main__":
