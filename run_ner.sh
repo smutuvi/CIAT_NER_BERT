@@ -10,6 +10,8 @@ SAVE_STEPS=1000
 LOGGING_STEPS=1000
 SEED=42
 
+#cat train.txt dev.txt test.txt | cut -d " " -f 2 | grep -v "^$"| sort | uniq > labels.txt
+
 python3 run_ner.py \
   --data_dir=./data \
   --model_type=bert \
