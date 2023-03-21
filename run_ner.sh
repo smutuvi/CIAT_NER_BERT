@@ -1,5 +1,7 @@
 rm -r output_dir/* runs/*
 
+# roberta, roberta-base
+
 task=epidemic
 MAX_LENGTH=128
 MODEL=bert-base-cased
